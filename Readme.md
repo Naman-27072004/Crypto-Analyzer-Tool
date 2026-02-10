@@ -67,7 +67,7 @@ Crypto-Analyzer-Tool/
 ## 🚀 Getting Started
 ### 1️⃣ Clone the Repository
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Naman-27072004/Crypto-Analyzer-Tool.git
 cd crypto-analyzer-tool
 ```
 ### 2️⃣ Install Dependencies
@@ -114,3 +114,4 @@ This project is licensed under the MIT License.
 - Naman Gupta
 - Full-Stack Developer | AI & ML Enthusiast
 - MCA @ JIMS Rohini
+
