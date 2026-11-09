@@ -44,7 +44,10 @@
                 
                 <div class="hidden md:flex items-center gap-10">
                     <a href="#home" class="text-sm font-medium hover:text-cyan-400 transition-colors">Home</a>
+                    <a href="#market-movers" class="text-sm font-medium hover:text-cyan-400 transition-colors">Movers</a>
                     <a href="#predict" class="text-sm font-medium hover:text-cyan-400 transition-colors">Predict</a>
+                    <a href="#calculator" class="text-sm font-medium hover:text-cyan-400 transition-colors">P&amp;L Calculator</a>
+                    <a href="#learning" class="text-sm font-medium hover:text-cyan-400 transition-colors">Learn</a>
                     <a href="#news" class="text-sm font-medium hover:text-cyan-400 transition-colors">Intelligence</a>
                     <a href="#about" class="text-sm font-medium hover:text-cyan-400 transition-colors">About</a>
                 </div>
@@ -62,13 +65,13 @@
         <div class="absolute top-[1500px] right-0 w-96 h-96 bg-blue-500/10 blur-[120px] rounded-full -z-10"></div>
 
         <!-- 1. HOME SECTION: SEARCH -->
-        <section id="home" class="max-w-7xl mx-auto px-4 pt-24 pb-32">
-            <div class="text-center mb-20">
+        <section id="home" class="max-w-7xl mx-auto px-4 pt-24 pb-20">
+            <div class="text-center mb-16">
                 <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 animate__animated animate__fadeInDown">
                     Market Analysis <span class="text-gradient">Engine</span>
                 </h1>
                 <p class="text-lg text-slate-400 max-w-2xl mx-auto mb-12">
-                    Access deep-market metrics and 365-day historical visualizations for the world's leading digital assets.
+                    Access deep-market metrics, 24-hour price changes, and 365-day historical visualizations for the world's leading digital assets.
                 </p>
 
                 <!-- Search UI -->
@@ -87,6 +90,73 @@
                         <div class="w-12 h-12 border-4 border-cyan-500/10 border-t-cyan-500 rounded-full animate-spin"></div>
                     </div>
                     <div id="crypto-result" class="mt-12"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TOP GAINERS & LOSERS (24H MARKET MOVERS) -->
+        <section id="market-movers" class="max-w-7xl mx-auto px-4 py-16 border-t border-white/5">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                <div>
+                    <span class="text-xs font-black text-cyan-400 uppercase tracking-widest block mb-2">24h Market Overview</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Top Gainers &amp; <span class="text-gradient">Losers</span></h2>
+                </div>
+                <div class="mt-4 md:mt-0 flex items-center gap-3">
+                    <button id="refresh-movers-btn" class="px-4 py-2 text-xs font-semibold glass-card rounded-xl hover:border-cyan-500/50 transition-all flex items-center gap-2">
+                        <i class="fas fa-rotate text-cyan-400"></i> Refresh 24h Data
+                    </button>
+                </div>
+            </div>
+
+            <div id="movers-loader" class="hidden my-8 justify-center">
+                <div class="w-10 h-10 border-4 border-cyan-500/10 border-t-cyan-500 rounded-full animate-spin"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Top Gainers Card -->
+                <div class="glass-card rounded-3xl p-6 sm:p-8 border-emerald-500/20">
+                    <div class="flex items-center justify-between pb-6 mb-6 border-b border-white/10">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold">
+                                <i class="fas fa-arrow-trend-up"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Top 24h Gainers</h3>
+                                <p class="text-xs text-slate-400">Leading positive price changes</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-[10px] font-black rounded-full border border-emerald-500/20 uppercase tracking-wider">Bullish Run</span>
+                    </div>
+                    <div id="top-gainers-list" class="space-y-3">
+                        <div class="animate-pulse space-y-3">
+                            <div class="h-14 bg-white/5 rounded-xl"></div>
+                            <div class="h-14 bg-white/5 rounded-xl"></div>
+                            <div class="h-14 bg-white/5 rounded-xl"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Losers Card -->
+                <div class="glass-card rounded-3xl p-6 sm:p-8 border-rose-500/20">
+                    <div class="flex items-center justify-between pb-6 mb-6 border-b border-white/10">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center font-bold">
+                                <i class="fas fa-arrow-trend-down"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Top 24h Losers</h3>
+                                <p class="text-xs text-slate-400">Deepest 24-hour drawdowns</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 bg-rose-500/10 text-rose-400 text-[10px] font-black rounded-full border border-rose-500/20 uppercase tracking-wider">Pullbacks</span>
+                    </div>
+                    <div id="top-losers-list" class="space-y-3">
+                        <div class="animate-pulse space-y-3">
+                            <div class="h-14 bg-white/5 rounded-xl"></div>
+                            <div class="h-14 bg-white/5 rounded-xl"></div>
+                            <div class="h-14 bg-white/5 rounded-xl"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -114,6 +184,199 @@
                         <i class="fas fa-brain text-cyan-500 text-4xl animate-pulse"></i>
                     </div>
                     <div id="crypto-prediction-result"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CRYPTO PROFIT / LOSS CALCULATOR -->
+        <section id="calculator" class="max-w-7xl mx-auto px-4 py-28 border-b border-white/5">
+            <div class="text-center mb-16">
+                <span class="text-xs font-black text-cyan-400 uppercase tracking-widest block mb-2">Portfolio Tools</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Crypto <span class="text-gradient">Profit &amp; Loss Calculator</span></h2>
+                <p class="text-slate-400 text-base max-w-2xl mx-auto">
+                    Simulate your return on investment (ROI), net gains, and break-even points with optional fee calculations.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start max-w-5xl mx-auto">
+                <!-- Calculator Inputs -->
+                <div class="lg:col-span-7 glass-card rounded-3xl p-8 border-cyan-500/20">
+                    <form id="calc-form" class="space-y-6" onsubmit="return false;">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="text-xs uppercase font-bold text-slate-400 tracking-wider block mb-2">Buy / Entry Price ($)</label>
+                                <div class="relative">
+                                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">$</span>
+                                    <input type="number" id="calc-buy-price" step="any" min="0" placeholder="e.g. 50000" required
+                                        class="w-full bg-slate-900/60 border border-white/10 rounded-xl py-3.5 pl-8 pr-4 text-white focus:outline-none focus:border-cyan-500 transition-all font-mono text-sm">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text-xs uppercase font-bold text-slate-400 tracking-wider block mb-2">Sell / Exit Price ($)</label>
+                                <div class="relative">
+                                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">$</span>
+                                    <input type="number" id="calc-sell-price" step="any" min="0" placeholder="e.g. 68000" required
+                                        class="w-full bg-slate-900/60 border border-white/10 rounded-xl py-3.5 pl-8 pr-4 text-white focus:outline-none focus:border-cyan-500 transition-all font-mono text-sm">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="text-xs uppercase font-bold text-slate-400 tracking-wider block mb-2">Investment Amount ($)</label>
+                                <div class="relative">
+                                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">$</span>
+                                    <input type="number" id="calc-investment" step="any" min="0" placeholder="e.g. 1000" required
+                                        class="w-full bg-slate-900/60 border border-white/10 rounded-xl py-3.5 pl-8 pr-4 text-white focus:outline-none focus:border-cyan-500 transition-all font-mono text-sm">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text-xs uppercase font-bold text-slate-400 tracking-wider block mb-2">Trading Fees (%)</label>
+                                <div class="relative">
+                                    <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500">%</span>
+                                    <input type="number" id="calc-fee" step="0.01" min="0" value="0.1"
+                                        class="w-full bg-slate-900/60 border border-white/10 rounded-xl py-3.5 pl-4 pr-8 text-white focus:outline-none focus:border-cyan-500 transition-all font-mono text-sm">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 pt-2">
+                            <button type="button" id="calc-submit-btn" class="flex-1 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl font-bold text-white hover:shadow-lg transition-all active:scale-95 shadow-cyan-500/20">
+                                Calculate Profit / Loss
+                            </button>
+                            <button type="button" id="calc-reset-btn" class="px-5 py-4 glass-card rounded-xl text-slate-400 hover:text-white transition-all text-sm font-semibold">
+                                Reset
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Calculator Results Display -->
+                <div class="lg:col-span-5 glass-card rounded-3xl p-8 border-white/10 flex flex-col justify-between self-stretch">
+                    <div>
+                        <div class="flex items-center justify-between pb-4 mb-6 border-b border-white/10">
+                            <h4 class="text-sm font-bold uppercase tracking-wider text-white">Summary Outcome</h4>
+                            <span id="calc-badge" class="px-3 py-1 bg-white/5 text-slate-400 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-wider">Awaiting Input</span>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="p-4 rounded-2xl bg-black/30 border border-white/5">
+                                <span class="text-[10px] font-black uppercase text-slate-400 tracking-widest block mb-1">Total Profit / Loss</span>
+                                <div id="calc-net-pnl" class="text-3xl font-black text-slate-300 font-mono">$0.00</div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="p-4 rounded-xl bg-black/20 border border-white/5">
+                                    <span class="text-[9px] font-black uppercase text-slate-500 tracking-widest block mb-1">ROI / Return</span>
+                                    <div id="calc-roi" class="text-lg font-bold text-slate-300 font-mono">0.00%</div>
+                                </div>
+                                <div class="p-4 rounded-xl bg-black/20 border border-white/5">
+                                    <span class="text-[9px] font-black uppercase text-slate-500 tracking-widest block mb-1">Total Exit Value</span>
+                                    <div id="calc-total-exit" class="text-lg font-bold text-white font-mono">$0.00</div>
+                                </div>
+                            </div>
+
+                            <div class="pt-2 space-y-2 text-xs text-slate-400">
+                                <div class="flex justify-between py-1 border-b border-white/5">
+                                    <span>Units Acquired:</span>
+                                    <span id="calc-units" class="font-mono text-white">0</span>
+                                </div>
+                                <div class="flex justify-between py-1 border-b border-white/5">
+                                    <span>Total Fees Deducted:</span>
+                                    <span id="calc-total-fees" class="font-mono text-rose-400">$0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-[11px] text-slate-500 italic mt-6">Calculations include buy and sell side trading fees. Always manage your risk according to your investment strategy.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CRYPTO LEARNING HUB -->
+        <section id="learning" class="max-w-7xl mx-auto px-4 py-28 border-b border-white/5">
+            <div class="text-center mb-16">
+                <span class="text-xs font-black text-cyan-400 uppercase tracking-widest block mb-2">Knowledge Base</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Crypto <span class="text-gradient">Learning Hub</span></h2>
+                <p class="text-slate-400 text-base max-w-2xl mx-auto">
+                    Master essential cryptocurrency concepts, technical indicators, and risk management strategies.
+                </p>
+            </div>
+
+            <!-- Learning Category Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card rounded-3xl p-8 hover:border-cyan-500/40 transition-all group">
+                    <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-cubes"></i>
+                    </div>
+                    <span class="text-[10px] font-black text-cyan-400 tracking-widest uppercase block mb-2">Fundamentals</span>
+                    <h3 class="text-xl font-bold text-white mb-3">Blockchain &amp; Smart Contracts</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Understand distributed ledgers, consensus mechanisms (Proof of Work vs Proof of Stake), and self-executing smart contracts.
+                    </p>
+                    <ul class="text-xs text-slate-400 space-y-2 border-t border-white/10 pt-4">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400 text-[10px]"></i> Decentralization &amp; immutability</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400 text-[10px]"></i> Gas fees &amp; transaction finality</li>
+                    </ul>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card rounded-3xl p-8 hover:border-blue-500/40 transition-all group">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-chart-candlestick"></i>
+                    </div>
+                    <span class="text-[10px] font-black text-blue-400 tracking-widest uppercase block mb-2">Technical Analysis</span>
+                    <h3 class="text-xl font-bold text-white mb-3">Market Metrics &amp; Indicators</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Learn how to read 24-hour volume spikes, Moving Averages (MA), RSI overbought/oversold levels, and trend reversals.
+                    </p>
+                    <ul class="text-xs text-slate-400 space-y-2 border-t border-white/10 pt-4">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-blue-400 text-[10px]"></i> 7-day vs 365-day moving average shifts</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-blue-400 text-[10px]"></i> Support, resistance &amp; breakout patterns</li>
+                    </ul>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card rounded-3xl p-8 hover:border-emerald-500/40 transition-all group">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <span class="text-[10px] font-black text-emerald-400 tracking-widest uppercase block mb-2">Security &amp; Strategy</span>
+                    <h3 class="text-xl font-bold text-white mb-3">Risk Management &amp; Custody</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Protect your portfolio using cold storage, stop-loss orders, position sizing, and Dollar Cost Averaging (DCA).
+                    </p>
+                    <ul class="text-xs text-slate-400 space-y-2 border-t border-white/10 pt-4">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-400 text-[10px]"></i> Self-custody vs custodial exchanges</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-400 text-[10px]"></i> Asymmetric risk/reward ratios</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Quick glossary / FAQ accordion style -->
+            <div class="mt-12 glass-card rounded-3xl p-8 max-w-4xl mx-auto border-white/10">
+                <h4 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+                    <i class="fas fa-book-open text-cyan-400"></i> Crypto Glossary &amp; Quick Insights
+                </h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                    <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/5">
+                        <span class="font-bold text-cyan-400 block mb-1">24h Percentage Change</span>
+                        <p class="text-slate-400 text-xs leading-relaxed">Measures the relative price change over the past 24 hours. Vital for identifying short-term momentum and volatility spikes.</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/5">
+                        <span class="font-bold text-cyan-400 block mb-1">Market Capitalization (MCap)</span>
+                        <p class="text-slate-400 text-xs leading-relaxed">Calculated by multiplying the circulating coin supply by the current price. Indicates the relative size and stability of a token.</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/5">
+                        <span class="font-bold text-cyan-400 block mb-1">DCA (Dollar Cost Averaging)</span>
+                        <p class="text-slate-400 text-xs leading-relaxed">An investment strategy where total funds are divided into equal periodic purchases to minimize the impact of volatility.</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/5">
+                        <span class="font-bold text-cyan-400 block mb-1">Slippage &amp; Liquidity</span>
+                        <p class="text-slate-400 text-xs leading-relaxed">The difference between expected trade price and execution price. Higher liquidity pools result in lower slippage.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -268,7 +531,155 @@
                 } catch(e) { toggle('search-loader', false); searchResult.innerHTML = `<div class="p-6 glass-card text-rose-400 text-center">Asset synchronization failure.</div>`; }
             });
 
-            // --- 2. PREDICT LOGIC ---
+            // --- 2. TOP GAINERS & LOSERS LOGIC ---
+            const topGainersList = document.getElementById("top-gainers-list");
+            const topLosersList = document.getElementById("top-losers-list");
+            const refreshMoversBtn = document.getElementById("refresh-movers-btn");
+
+            // Fallback curated crypto dataset in case CoinGecko rate-limits
+            const fallbackMovers = [
+                { id: "bitcoin", name: "Bitcoin", symbol: "btc", image: "https://assets.coingecko.com/coins/images/1/small/bitcoin.png", current_price: 67850, price_change_percentage_24h: 3.42 },
+                { id: "ethereum", name: "Ethereum", symbol: "eth", image: "https://assets.coingecko.com/coins/images/279/small/ethereum.png", current_price: 3540, price_change_percentage_24h: 4.88 },
+                { id: "solana", name: "Solana", symbol: "sol", image: "https://assets.coingecko.com/coins/images/4128/small/solana.png", current_price: 182.4, price_change_percentage_24h: 8.65 },
+                { id: "ripple", name: "XRP", symbol: "xrp", image: "https://assets.coingecko.com/coins/images/44/small/xrp-symbol-white-128.png", current_price: 0.59, price_change_percentage_24h: 2.15 },
+                { id: "dogecoin", name: "Dogecoin", symbol: "doge", image: "https://assets.coingecko.com/coins/images/5/small/dogecoin.png", current_price: 0.142, price_change_percentage_24h: -4.75 },
+                { id: "cardano", name: "Cardano", symbol: "ada", image: "https://assets.coingecko.com/coins/images/975/small/cardano.png", current_price: 0.46, price_change_percentage_24h: -3.18 },
+                { id: "avalanche-2", name: "Avalanche", symbol: "avax", image: "https://assets.coingecko.com/coins/images/12559/small/Avalanche_Circle_RedWhite_Trans.png", current_price: 27.8, price_change_percentage_24h: -5.42 },
+                { id: "sui", name: "Sui", symbol: "sui", image: "https://assets.coingecko.com/coins/images/26375/small/sui_asset.jpeg", current_price: 2.15, price_change_percentage_24h: 9.30 },
+                { id: "polkadot", name: "Polkadot", symbol: "dot", image: "https://assets.coingecko.com/coins/images/12171/small/polkadot.png", current_price: 4.25, price_change_percentage_24h: -2.85 },
+                { id: "chainlink", name: "Chainlink", symbol: "link", image: "https://assets.coingecko.com/coins/images/877/small/chainlink-new-logo.png", current_price: 12.3, price_change_percentage_24h: 5.12 }
+            ];
+
+            const renderMovers = (coins) => {
+                if(!topGainersList || !topLosersList) return;
+                const sorted = [...coins].filter(c => typeof c.price_change_percentage_24h === 'number');
+                const gainers = [...sorted].sort((a,b) => b.price_change_percentage_24h - a.price_change_percentage_24h).slice(0, 5);
+                const losers = [...sorted].sort((a,b) => a.price_change_percentage_24h - b.price_change_percentage_24h).slice(0, 5);
+
+                const createMoverRow = (coin, isGain) => `
+                    <div class="flex items-center justify-between p-3.5 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.05] hover:border-white/10 transition-all cursor-pointer group"
+                         onclick="document.getElementById('crypto-input').value='${coin.id}'; document.getElementById('search-button').click(); document.getElementById('home').scrollIntoView({behavior:'smooth'});">
+                        <div class="flex items-center gap-3">
+                            <img src="${coin.image}" class="w-8 h-8 rounded-full ring-1 ring-white/10" onerror="this.src='favicon.png'">
+                            <div>
+                                <span class="text-white text-sm font-bold group-hover:text-cyan-400 transition-colors block">${coin.name}</span>
+                                <span class="text-slate-500 text-[10px] uppercase font-mono">${coin.symbol}</span>
+                            </div>
+                        </div>
+                        <div class="text-right font-mono">
+                            <span class="text-white text-sm font-semibold block">$${(coin.current_price || 0).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 4})}</span>
+                            <span class="${isGain ? 'text-emerald-400' : 'text-rose-400'} text-xs font-bold flex items-center justify-end gap-1">
+                                <i class="fas fa-caret-${isGain ? 'up' : 'down'}"></i>
+                                ${Math.abs(coin.price_change_percentage_24h).toFixed(2)}%
+                            </span>
+                        </div>
+                    </div>
+                `;
+
+                topGainersList.innerHTML = gainers.map(c => createMoverRow(c, true)).join('');
+                topLosersList.innerHTML = losers.map(c => createMoverRow(c, false)).join('');
+            };
+
+            const fetchTopMovers = async () => {
+                toggle('movers-loader', true);
+                try {
+                    const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false&price_change_percentage=24h');
+                    if(!res.ok) throw new Error("API rate limited");
+                    const data = await res.json();
+                    if(Array.isArray(data) && data.length > 0) {
+                        renderMovers(data);
+                    } else {
+                        renderMovers(fallbackMovers);
+                    }
+                } catch(e) {
+                    renderMovers(fallbackMovers);
+                } finally {
+                    toggle('movers-loader', false);
+                }
+            };
+
+            refreshMoversBtn?.addEventListener('click', fetchTopMovers);
+            fetchTopMovers();
+
+            // --- 3. PROFIT / LOSS CALCULATOR LOGIC ---
+            const calcBuyInput = document.getElementById("calc-buy-price");
+            const calcSellInput = document.getElementById("calc-sell-price");
+            const calcInvestInput = document.getElementById("calc-investment");
+            const calcFeeInput = document.getElementById("calc-fee");
+            const calcSubmitBtn = document.getElementById("calc-submit-btn");
+            const calcResetBtn = document.getElementById("calc-reset-btn");
+
+            const calcNetPnl = document.getElementById("calc-net-pnl");
+            const calcRoi = document.getElementById("calc-roi");
+            const calcTotalExit = document.getElementById("calc-total-exit");
+            const calcUnits = document.getElementById("calc-units");
+            const calcTotalFees = document.getElementById("calc-total-fees");
+            const calcBadge = document.getElementById("calc-badge");
+
+            const computePnL = () => {
+                const buyPrice = parseFloat(calcBuyInput.value);
+                const sellPrice = parseFloat(calcSellInput.value);
+                const investment = parseFloat(calcInvestInput.value);
+                const feePercent = parseFloat(calcFeeInput.value) || 0;
+
+                if(isNaN(buyPrice) || buyPrice <= 0 || isNaN(sellPrice) || sellPrice < 0 || isNaN(investment) || investment <= 0) {
+                    return;
+                }
+
+                // Buy side fee
+                const buyFeeAmount = investment * (feePercent / 100);
+                const netInvestment = investment - buyFeeAmount;
+                const units = netInvestment / buyPrice;
+
+                // Sell side calculation
+                const grossExitValue = units * sellPrice;
+                const sellFeeAmount = grossExitValue * (feePercent / 100);
+                const netExitValue = grossExitValue - sellFeeAmount;
+
+                const netProfit = netExitValue - investment;
+                const roi = (netProfit / investment) * 100;
+                const totalFees = buyFeeAmount + sellFeeAmount;
+
+                const isProfit = netProfit >= 0;
+
+                // Update UI elements
+                calcNetPnl.textContent = `${isProfit ? '+' : '-'}$${Math.abs(netProfit).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+                calcNetPnl.className = `text-3xl font-black font-mono ${isProfit ? 'text-emerald-400' : 'text-rose-400'}`;
+
+                calcRoi.textContent = `${isProfit ? '+' : ''}${roi.toFixed(2)}%`;
+                calcRoi.className = `text-lg font-bold font-mono ${isProfit ? 'text-emerald-400' : 'text-rose-400'}`;
+
+                calcTotalExit.textContent = `$${netExitValue.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+                calcUnits.textContent = units < 0.0001 ? units.toExponential(4) : units.toLocaleString(undefined, {maximumFractionDigits: 6});
+                calcTotalFees.textContent = `$${totalFees.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+
+                calcBadge.textContent = isProfit ? "Net Profit" : "Net Loss";
+                calcBadge.className = `px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${isProfit ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-rose-500/10 text-rose-400 border border-rose-500/20'}`;
+            };
+
+            calcSubmitBtn?.addEventListener("click", computePnL);
+            [calcBuyInput, calcSellInput, calcInvestInput, calcFeeInput].forEach(inp => {
+                inp?.addEventListener("input", () => {
+                    if(calcBuyInput.value && calcSellInput.value && calcInvestInput.value) {
+                        computePnL();
+                    }
+                });
+            });
+
+            calcResetBtn?.addEventListener("click", () => {
+                document.getElementById("calc-form").reset();
+                calcNetPnl.textContent = "$0.00";
+                calcNetPnl.className = "text-3xl font-black text-slate-300 font-mono";
+                calcRoi.textContent = "0.00%";
+                calcRoi.className = "text-lg font-bold text-slate-300 font-mono";
+                calcTotalExit.textContent = "$0.00";
+                calcUnits.textContent = "0";
+                calcTotalFees.textContent = "$0.00";
+                calcBadge.textContent = "Awaiting Input";
+                calcBadge.className = "px-3 py-1 bg-white/5 text-slate-400 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-wider";
+            });
+
+            // --- 4. PREDICT LOGIC ---
             const predictBtn = document.getElementById("prediction-button");
             const predictInput = document.getElementById("crypto-input-prediction");
             const predictResult = document.getElementById("crypto-prediction-result");
